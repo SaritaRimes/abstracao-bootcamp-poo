@@ -1,5 +1,4 @@
-import dominio.Curso;
-import dominio.Mentoria;
+import dominio.*;
 
 import java.time.LocalDate;
 
@@ -12,13 +11,13 @@ public class Main {
         curso1.setCargaHoraria(8);
 
         Curso curso2 = new Curso(
-            "Curso C# iniciante",
-            "Curso de C# para iniciantes",
+            "Curso Java intermediário",
+            "Curso de Java intermediário",
             8
         );
 
-        System.out.println(curso1);
-        System.out.println(curso2);
+//        System.out.println(curso1);
+//        System.out.println(curso2);
 
         /* Instanciando mentorias */
         Mentoria mentoria1 = new Mentoria();
@@ -26,13 +25,46 @@ public class Main {
         mentoria1.setDescricao("Mentoria de Java");
         mentoria1.setData(LocalDate.now());
 
-        Mentoria mentoria2 = new Mentoria(
+        Conteudo mentoria2 = new Mentoria(
                 "Mentoria C#",
                 "Mentoria de C#",
                 LocalDate.now()
         );
 
-        System.out.println(mentoria1);
-        System.out.println(mentoria2);
+//        System.out.println(mentoria1);
+//        System.out.println(mentoria2);
+
+        /* Instanciando Conteudo */
+        Conteudo conteudo1 = new Curso();
+
+        // ----------------------------------------------------------
+
+        /* Criando um Bootcamp */
+        Bootcamp bootcamp = new Bootcamp("Java Developer", "Descrição Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria1);
+
+        Dev julia = new Dev("Julia");
+        Dev joao = new Dev("João");
+
+        julia.inscreverBootcamp(bootcamp);
+        joao.inscreverBootcamp(bootcamp);
+
+        julia.progredir();
+        joao.progredir();
+
+        System.out.println("Dev " + julia.getNome() + ":");
+        System.out.println("Conteúdos inscritos: " + julia.getConteudosInscritos());
+        System.out.println("Conteúdos concluidos: " + julia.getConteudosConcluidos());
+        System.out.println("XP: " + julia.calcularTotalXp());
+        System.out.println("---------------------------------");
+
+        System.out.println("Dev " + joao.getNome() + ":");
+        System.out.println("Conteúdos inscritos " + joao.getNome() + ": " + joao.getConteudosInscritos());
+        System.out.println("Conteúdos concluidos " + joao.getNome() + ": " + joao.getConteudosConcluidos());
+        System.out.println("XP: " + joao.calcularTotalXp());
+        System.out.println("---------------------------------");
+
     }
 }

@@ -1,9 +1,7 @@
 package dominio;
 
-public class Curso {
+public class Curso extends Conteudo {
     /* Atributos */
-    private String titulo;
-    private String descricao;
     private int cargaHoraria;
 
     /* Construtores */
@@ -48,5 +46,11 @@ public class Curso {
                 ", descricao = '" + descricao + '\'' +
                 ", cargaHoraria = " + cargaHoraria +
                 " }";
+    }
+
+    /* Metodos especificos */
+    @Override
+    public double calcularXp() {
+        return XP_PADRAO * cargaHoraria;
     }
 }
